@@ -67,7 +67,7 @@ class PhoneBookTest {
     }
 
     @Nested
-    class other {
+    class not_repeatable {
 
         @Test
         void should_find_all_contact_matching() {
@@ -78,7 +78,7 @@ class PhoneBookTest {
             List<Contact> matchingContacts = phoneBook.findAllContact("Ja");
 
             // Assert
-            assertThat(matchingContacts.size()).isEqualTo(266434);
+            assertThat(matchingContacts.size()).isEqualTo(130381);
         }
 
         @Test
