@@ -15,7 +15,7 @@ namespace UnitTestFIRST
 
         public string FindName(string phoneNumber)
         {
-            return this.contacts.FirstOrDefault(n => n.PhoneNumber == phoneNumber).PhoneNumber;
+            return this.contacts.FirstOrDefault(n => n.PhoneNumber == phoneNumber)?.Name;
         }
 
         public bool AddContact(Contact newContact)
@@ -25,10 +25,7 @@ namespace UnitTestFIRST
             return true;
         }
 
-        public IEnumerable<Contact> GetContacts()
-        {
-            return this.contacts;
-        }
+
 
         public List<Contact> FindAllContact(string searchParameter)
         {
@@ -37,5 +34,29 @@ namespace UnitTestFIRST
                 .Where(c => c.Name.Contains(searchParameter) || c.PhoneNumber.Contains(searchParameter))
                 .ToList();
         }
+
+        public bool RemoveContact(Contact contactToRemove)
+        {
+            if (contacts.Contains(contactToRemove))
+                return false;
+            contacts.Remove(contactToRemove);
+            return true;
+        }
+
+        public string Lookup(string name)
+        {
+            return contacts
+                .FirstOrDefault(contact => contact.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
+                ?.PhoneNumber;
+        }        
+        
+        public string ReverseLookup(string phoneNumber)
+        {
+            return contacts
+                .FirstOrDefault(contact => contact.Name.Equals(phoneNumber, StringComparison.InvariantCultureIgnoreCase))
+                ?.Name;
+        }
+
+        public List<Contact> Contacts => contacts.ToList();
     }
 }

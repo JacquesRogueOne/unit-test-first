@@ -7,7 +7,8 @@ namespace UnitTestFIRST
 {
     public class Persistence
     {
-        private static readonly string SRC_MAIN_RESOURCES_CORE = "../src/resources/core/";
+        private static readonly string SRC_MAIN_RESOURCES_CORE = @"..\..\..\..\resources\";
+
         public IEnumerable<string> RetrieveFromPersistence(string fileName)
         {
             try

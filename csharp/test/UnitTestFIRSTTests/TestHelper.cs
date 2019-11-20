@@ -19,7 +19,7 @@ namespace UnitTestFIRSTTests
         public static IEnumerable<Contact> RetrieveContacts()
         {
             var list = new Persistence().RetrieveFromPersistence(MY_CONTACT_CSV);
-            return list.ToList().Select(x => new Contact(x.Split(';')[0], x.Split(';')[1]));
+            return list.Select(x => new Contact(x.Split(';')[1], x.Split(';')[0]));
         }
 
         public static void StoreContacts(IEnumerable<Contact> contacts)
